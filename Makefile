@@ -22,8 +22,7 @@ CFLAGS ?= \
     -lnosys \
     -Wl,-e,main \
     -Wl,-Map,app.map \
-
-# AR=$(shell $(CC) --print-prog-name=ar)
+    -Wl,--wrap=malloc \
 
 app.elf: app.c
 	$(CC) -Wl,--gc-sections -o $@ app.c $(CFLAGS)
